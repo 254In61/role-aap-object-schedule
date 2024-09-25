@@ -1,0 +1,9 @@
+---
+# Create schedule
+- name: "Build a schedule for {{ template_name }}"
+  ansible.controller.schedule:
+    name: "{{ schedule_name }}"
+    state: present
+    unified_job_template: "{{ template }}"
+    rrule: "{{ rrule }}"
+  register: result

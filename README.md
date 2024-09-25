@@ -1,2 +1,2 @@
-# role-aap-object-schedule
-Role to build schedule aap object
+# role-aap-object-credential
+Ansible role to build AAP schedule objects
