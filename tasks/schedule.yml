@@ -5,5 +5,6 @@
     name: "{{ name }}"
     state: present
     unified_job_template: "{{ template }}"
+    description: "{{ description }}"
     rrule: "{{ rrule }}"
   register: result
