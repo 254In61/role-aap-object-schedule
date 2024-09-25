@@ -13,7 +13,7 @@ Step 1: Install the role in your environment.
 
 Step 2: Define your variables
 
-schedule: true/false # Bool value to switch role on off.
+build: true/false # Bool value to switch role on off.
 
 list_name:
   - schedule name
