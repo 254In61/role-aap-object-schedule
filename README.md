@@ -5,16 +5,13 @@ Ansible role to build AAP schedule objects
 https://console.redhat.com/ansible/automation-hub/repo/published/ansible/controller/content/module/schedule/
 
 
-# design
-- Role takes in a list and runs with it.
-
 # How to use
 
 Step 1: Install the role in your environment.
    - You could have roles/requirements.yml if running on AAP.
    - Or simple install on your environment.
 
-Step 2: Define your list in the structure below
+Step 2: Define your variables
 
 schedule: true/false # Bool value to switch role on off.
 
@@ -26,21 +23,23 @@ list_name:
 
 Step 3: Call the role from your playbook.
 
-# Example playbook
+# Example
 
 ## varible definition in group_vars/*.yml
 cisco_schedule:
-  - "{{ cisco_job_template[0] }}" # re-using job-template name
-  - "{{ cisco_job_template[0] }}"
+  - "{{ cisco_config_backup_job_template_name }}" # re-using job-template name
+  - "{{ cisco_config_backup_job_template_name }}"
   - "{{ common_description }}"
   - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ cisco_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
   
 
 junos_schedule:
-  - "{{ junos_job_template[0] }}" # re-using job-template name
-  - "{{ junos_job_template[0] }}"
+  - "{{ junos_config_backup_job_template_name }}" # re-using job-template name
+  - "{{ junos_config_backup_job_template_name }}"
   - "{{ common_description }}"
   - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ junos_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  
+
   
 ##
 
@@ -61,7 +60,7 @@ junos_schedule:
       ansible.builtin.include_role:
         name: role-aap-object-schedule
       vars:
-        schedule: "{{ schedule_build }}"
+        schedule: true
         in_list: "{{ item }}"
       loop:
         - "{{ cisco_schedule }}"
