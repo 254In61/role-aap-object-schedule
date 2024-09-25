@@ -1,4 +1,4 @@
 ---
 - name: Import schedule tasks
-  ansible.builtin.import_tasks: schedule.yml
+  ansible.builtin.import_tasks: build.yml
   when: schedule | bool
