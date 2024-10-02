@@ -1,0 +1,14 @@
+---
+cisco_schedule:
+  - "{{ cisco_config_backup_job_template_name }}" # re-using job-template name
+  - "{{ cisco_config_backup_job_template_name }}"
+  - "{{ common_description }}"
+  - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ cisco_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  
+
+junos_schedule:
+  - "{{ junos_config_backup_job_template_name }}" # re-using job-template name
+  - "{{ junos_config_backup_job_template_name }}"
+  - "{{ common_description }}"
+  - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ junos_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  
