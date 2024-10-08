@@ -15,10 +15,11 @@
       ansible.builtin.include_role:
         name: role-aap-object-schedule
       vars:
-        schedule: true
-        in_list: "{{ item }}"
-      loop:
-        - "{{ cisco_schedule }}"
-        - "{{ junos_schedule }}"
+        build: true
+        schedule_name: "{{ item.value.schedule_name }}"
+        job_template: "{{ item.value.job_template }}"
+        rrule: "{{ item.value.rrule }}"
+        description: "{{ common_description }}"
+      loop: "{{ lookup('dict', schedules) }}"
     !
     !

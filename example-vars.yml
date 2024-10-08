@@ -1,14 +1,37 @@
 ---
-cisco_schedule:
-  - "{{ cisco_config_backup_job_template_name }}" # re-using job-template name
-  - "{{ cisco_config_backup_job_template_name }}"
-  - "{{ common_description }}"
-  - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ cisco_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
-  
+# common values
+time_zone: Australia/Sydney
+start_date: 20240101
+frequency: DAILY
+interval: 1
 
-junos_schedule:
-  - "{{ junos_config_backup_job_template_name }}" # re-using job-template name
-  - "{{ junos_config_backup_job_template_name }}"
-  - "{{ common_description }}"
-  - "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ junos_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
-  
+# cisco schedule time
+cisco_schedule_run_time: 1840
+
+# junos schedule time
+junos_schedule_run_time: 1845
+
+# fortios schedule time
+fortios_schedule_run_time: 1850
+
+# f5 schedule time
+f5_schedule_run_time: 1855
+
+schedules:
+  junos:
+    schedule_name: "{{ junos_config_backup_job_template_name }}"
+    job_template: "{{ junos_config_backup_job_template_name }}"
+    rrule: "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ junos_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  cisco:
+    schedule_name: "{{ cisco_config_backup_job_template_name }}"
+    job_template: "{{ cisco_config_backup_job_template_name }}"
+    rrule: "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ cisco_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  fortios:
+    schedule_name: "{{ fortios_config_backup_job_template_name }}"
+    job_template: "{{ fortios_config_backup_job_template_name }}"
+    rrule: "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ fortios_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+  f5:
+    schedule_name: "{{ f5_config_backup_job_template_name }}"
+    job_template: "{{ f5_config_backup_job_template_name }}"
+    rrule: "DTSTART;TZID={{ time_zone }}:{{ start_date }}T{{ f5_schedule_run_time }}00 RRULE:FREQ={{ frequency }};INTERVAL={{ interval }}"
+      
