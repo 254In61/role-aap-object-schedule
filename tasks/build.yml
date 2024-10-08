@@ -1,10 +1,10 @@
 ---
 # Create schedule
-- name: "Build a schedule for {{ in_list[0] }}"
+- name: "Build a schedule for {{ name }}"
   ansible.controller.schedule:
-    name: "{{ in_list[0] }}"
+    name: "{{ schedule_name }}"
     state: present
-    unified_job_template: "{{ in_list[1] }}"
-    description: "{{ in_list[2] }}"
-    rrule: "{{ in_list[3] }}"
+    unified_job_template: "{{ job_template }}"
+    rrule: "{{ rrule }}"
+    description: "{{ description }}"
   register: result
