@@ -11,19 +11,9 @@ Step 1: Install the role in your environment.
    - You could have roles/requirements.yml if running on AAP.
    - Or simple install on your environment.
 
-Step 2: Define your variables
+Step 2: Define your variables. See example-vars.yml
 
-- Role takes in a list of values that define a single schedule
-
-build: true/false # Bool value to switch role on off.
-
-list_name:
-  - schedule name
-  - job template name
-  - description 
-  - rrule
-
-Step 3: Call the role from your playbook.
+Step 3: Call the role from your playbook.See example-playbook.yml
 
 # Example
 
