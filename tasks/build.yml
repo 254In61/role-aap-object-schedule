@@ -1,6 +1,6 @@
 ---
 # Create schedule
-- name: "Build a schedule for {{ name }}"
+- name: "Build {{ schedule_name }} schedule"
   ansible.controller.schedule:
     name: "{{ schedule_name }}"
     state: present
